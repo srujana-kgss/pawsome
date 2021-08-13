@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_shade_1"
+    tools:context=".details">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="@color/grey"
+            android:scaleType="centerCrop"
+            android:id="@+id/iv2"
+            android:padding="3dp"
+            android:layout_margin="10dp"/>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/name"
+        android:layout_margin="6dp"
+        android:textColor="@color/yellow"
+        android:background="@color/grey"
+
+        android:textSize="24dp"
+        android:layout_below="@+id/iv2"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/origin"
+        android:layout_margin="6dp"
+        android:textColor="@color/yellow"
+        android:background="@color/grey"
+        android:textSize="24dp"
+        android:layout_below="@+id/name"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lifespan"
+        android:layout_margin="6dp"
+        android:textColor="@color/yellow"
+        android:background="@color/grey"
+        android:textSize="24dp"
+        android:layout_below="@+id/origin"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/temperament"
+        android:layout_margin="6dp"
+        android:textColor="@color/yellow"
+        android:background="@color/grey"
+        android:textSize="24dp"
+        android:layout_below="@+id/lifespan"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/breedgrp"
+        android:layout_margin="6dp"
+        android:textColor="@color/yellow"
+        android:background="@color/grey"
+        android:textSize="24dp"
+        android:layout_below="@+id/temperament"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/breedfor"
+        android:layout_margin="6dp"
+        android:textColor="@color/yellow"
+        android:background="@color/grey"
+        android:textSize="24dp"
+        android:layout_below="@+id/breedgrp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/breedfor"/>
+
+
+</RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
