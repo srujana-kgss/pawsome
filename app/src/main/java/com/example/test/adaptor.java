@@ -19,16 +19,20 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class adaptor extends RecyclerView.Adapter<adaptor.Viewholder>   {
+public class adaptor extends RecyclerView.Adapter<adaptor.Viewholder> implements Filterable {
 
-private List<dogbreedmodel> dogbreedmodelList;
+  List<dogbreedmodel> dogbreedmodelList;
 //for seraching
+     List<dogbreedmodel> searchlist;
 
-private Context context;
+
+  Context context;
 
     public adaptor(List<dogbreedmodel> dogbreedmodelList, Context context) {
         this.dogbreedmodelList = dogbreedmodelList;
         this.context = context;
+        searchlist=new ArrayList<>(dogbreedmodelList);
+
     }
 
     @NonNull
@@ -38,6 +42,7 @@ private Context context;
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv,parent,false);
         return new Viewholder(view);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull  adaptor.Viewholder holder, int position) {
@@ -64,9 +69,41 @@ private Context context;
     }
 
     @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    @Override
     public int getItemCount() {
         return dogbreedmodelList.size();
     }
+    private  Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<dogbreedmodel> filteredlist = new ArrayList<>();
+            if(constraint==null||constraint.length()==0){
+                filteredlist.addAll(searchlist);
+            }else {
+                String filterpattern = constraint.toString().toLowerCase().trim();
+                for(dogbreedmodel item  :searchlist ){
+                    if(item.getName().toLowerCase().contains(filterpattern))
+                    {
+                        filteredlist.add(item);
+                    }
+                }
+            }
+            FilterResults filterResults =new FilterResults();
+            filterResults.values=filteredlist;
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+          dogbreedmodelList.clear();
+          dogbreedmodelList.addAll((List)results.values);
+          notifyDataSetChanged();
+        }
+    };
 
 
 
@@ -82,4 +119,6 @@ private Context context;
 
         }
     }
+
+
 }

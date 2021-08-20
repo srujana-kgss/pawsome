@@ -7,22 +7,14 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
-<androidx.appcompat.widget.SearchView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/search_bar"
-    app:queryHint="search here"
-    android:background="@color/black_shade_1"
 
-    app:iconifiedByDefault="false"
-   />
 
     <Button
         android:id="@+id/uploadbutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_below="@+id/search_bar"
+
         android:text="upload image"
         app:backgroundTint="@color/black_shade_1" />
 
@@ -37,7 +29,13 @@
     android:layout_marginTop="5dp"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
-
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/idPBLoading"
+        android:visibility="gone"
+        />
 
 
 

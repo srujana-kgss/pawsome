@@ -30,8 +30,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/name"
         android:layout_margin="6dp"
-        android:textColor="@color/yellow"
-        android:background="@color/grey"
+        android:fontFamily="@font/allan"
+        android:textColor="@color/white"
+        android:background="@color/black"
 
         android:textSize="24dp"
         android:layout_below="@+id/iv2"/>
@@ -41,8 +42,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/origin"
         android:layout_margin="6dp"
-        android:textColor="@color/yellow"
-        android:background="@color/grey"
+        android:textColor="@color/white"
+        android:fontFamily="@font/allan"
+        android:background="@color/black"
         android:textSize="24dp"
         android:layout_below="@+id/name"/>
 
@@ -51,8 +53,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/lifespan"
         android:layout_margin="6dp"
-        android:textColor="@color/yellow"
-        android:background="@color/grey"
+        android:fontFamily="@font/allan"
+        android:textColor="@color/white"
+        android:background="@color/black"
         android:textSize="24dp"
         android:layout_below="@+id/origin"/>
 
@@ -61,8 +64,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/temperament"
         android:layout_margin="6dp"
-        android:textColor="@color/yellow"
-        android:background="@color/grey"
+        android:fontFamily="@font/allan"
+        android:textColor="@color/white"
+        android:background="@color/black"
         android:textSize="24dp"
         android:layout_below="@+id/lifespan"/>
     <TextView
@@ -70,8 +74,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/breedgrp"
         android:layout_margin="6dp"
-        android:textColor="@color/yellow"
-        android:background="@color/grey"
+        android:textColor="@color/white"
+        android:background="@color/black"
+        android:fontFamily="@font/allan"
         android:textSize="24dp"
         android:layout_below="@+id/temperament"/>
     <TextView
@@ -79,8 +84,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/breedfor"
         android:layout_margin="6dp"
-        android:textColor="@color/yellow"
-        android:background="@color/grey"
+        android:textColor="@color/white"
+        android:background="@color/black"
+        android:fontFamily="@font/allan"
         android:textSize="24dp"
         android:layout_below="@+id/breedgrp"/>
     <TextView

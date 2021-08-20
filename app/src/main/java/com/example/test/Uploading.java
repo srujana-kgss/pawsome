@@ -118,9 +118,9 @@ public class Uploading extends AppCompatActivity {
 
     // Upload the image to the remote database
     public void uploadImage(View view) {
-        File imageFile = new File(part_image);                                                          // Create a file using the absolute path of the image
-        RequestBody reqBody = RequestBody.create(MediaType.parse("multipart/form-file"), imageFile);
-        MultipartBody.Part partImage = MultipartBody.Part.createFormData("file", imageFile.getName(), reqBody);
+        File file = new File(part_image);                                                          // Create a file using the absolute path of the image
+        RequestBody reqBody = RequestBody.create(MediaType.parse(getContentResolver().getType(selectedimage)),file);
+        MultipartBody.Part partImage = MultipartBody.Part.createFormData("file", file.getName(), reqBody);
         Retrofitapi api = apiconfig.getInstance().getAPI();
         Call<ResponseBody> upload = api.uploadImage(partImage);
         upload.enqueue(new Callback<ResponseBody>() {

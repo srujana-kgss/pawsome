@@ -1,13 +1,19 @@
 package com.example.test;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -30,22 +36,51 @@ Button uploadbutton;
 RecyclerView recyclerView;
 LinearLayoutManager Layoutmanager;
 adaptor adap;
+    private ProgressBar progress;
 List<dogbreedmodel> dogbreedmodelList=new ArrayList<>();
 
 
 String URL="https://api.thedogapi.com/";
+
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu,menu);
+        MenuItem searchitem = menu.findItem(R.id.search);
+        getSupportActionBar().setTitle("pawsome");
+        SearchView searchView = (SearchView) searchitem.getActionView();
+
+        searchView.setInputType(EditorInfo.IME_ACTION_DONE);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adap.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 uploadbutton=findViewById(R.id.uploadbutton);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        progress=findViewById(R.id.idPBLoading);
+       // getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
        recyclerView=findViewById(R.id.recv);
        Layoutmanager=new LinearLayoutManager(this);
        recyclerView.setLayoutManager(Layoutmanager);
        adap=new adaptor(dogbreedmodelList,this);
-
+        progress.setVisibility(View.VISIBLE);
        recyclerView.setAdapter(adap);
 
 
@@ -60,10 +95,11 @@ uploadbutton=findViewById(R.id.uploadbutton);
        call.enqueue(new Callback<List<dogbreedmodel>>() {
            @Override
            public void onResponse(Call<List<dogbreedmodel>> call, Response<List<dogbreedmodel>> response) {
+               progress.setVisibility(View.GONE);
                List<dogbreedmodel> data =response.body();
                if (response.isSuccessful() && response.body()!=null){
-                dogbreedmodelList.addAll(response.body());
-                adap.notifyDataSetChanged();
+                   dogbreedmodelList.addAll(response.body());
+                   adap.notifyDataSetChanged();
               }
 
 
@@ -84,4 +120,6 @@ uploadbutton=findViewById(R.id.uploadbutton);
            }
        });
     }
+
+
 }
